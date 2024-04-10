@@ -1,0 +1,307 @@
+@tailwind base
+@tailwind components
+@tailwind utilities
+
+body
+    margin: 0
+
+.App
+    width: 200dvw
+    height: 200dvh
+    background: #242424
+    display: flex
+    justify-content: center
+    align-items: center
+    padding: 50px
+    overflow: scroll
+    font-family: "Noto Sans", sans-serif
+    font-weight: 500
+
+.card
+    display: flex
+    min-width: 500px //change to 70dvh for responsive
+    // width: 940px
+    height: 600px
+    background: white
+    border-radius: 8px
+    overflow-y: scroll
+
+    // &.final
+    //     min-width: 200px
+
+.card-scroll
+    position: relative
+    min-height: 100%
+
+    &.final
+        min-width: 900px
+
+.demo-component
+    flex: auto
+    max-width: 330px
+    height: auto
+    border-right: solid 1px rgba(0,0,0,.1)
+
+    &.initial
+        max-width: 420px
+
+        & + .secondhalf
+            min-width: 400px
+
+.logo-container
+    display: flex
+    justify-content: center
+    height: 180px
+    padding: 20px
+    border-bottom: solid 2px rgba(0,0,0,.1)
+
+.details-container
+    padding: 18px 28px
+    font-weight: 500
+
+.details
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    gap: 16px
+
+    h3
+        font-size: 28px
+        font-weight: 700
+
+    span
+        span
+            color: rgba(0,0,0,.55)
+            font-size: 16px
+            font-weight: 700
+
+    p
+        font-size: 16px
+
+.clock-icon
+    display: flex
+    flex-direction: column
+    align-items: flex-start
+    gap: 10px
+
+    *
+        color: rgba(0,0,0,.6)
+
+.secondhalf
+    display: flex
+    flex: auto
+    min-width: 570px
+
+.time-date-input
+    min-width: 200px
+    // width: 380px
+    width: 62%
+
+
+.timeselect-container
+    display: flex
+    flex-direction: column
+    min-width: 200px
+    flex: 1
+    padding: 74px 3px 0 0
+
+.time-container
+    overflow-y: scroll
+    padding: 16px 0
+
+.time-section
+    display: flex
+    flex-direction: column
+    width: 80%
+    gap: 10px
+
+
+.divtest
+    gap: 6px
+    justify-content: space-around
+    align-items: center
+
+.time-select
+    flex: 1
+    border: solid 1px rgba(40, 94, 180, 0.6)
+    border-radius: 4px
+    padding: 14px
+    color: rgb(59 130 246)
+    font-weight: 700
+    transition: .1s
+
+    &:hover
+        background: rgb(59,130,246)
+        border: solid 1px transparent
+        color: white
+
+    &.active
+        border: solid 1px transparent
+        background: rgba(0, 0, 0, 0.6)
+        color: white
+
+.next
+    flex: 1
+    padding: 14px
+    border: solid 1px rgb(59 130 246)
+    
+    &:hover
+        border: solid 1px rgb(37 99 235)
+
+
+.userdetails-container
+    height: auto
+    padding: 28px 30px
+
+.input-detail
+    width: 100%
+    padding: 10px 14px
+    border: solid 2px rgba(0,0,0,.2)
+    border-radius: 8px
+
+    &::placeholder
+        color: rgba(0,0,0,0.9)
+        font-size: 15px
+
+.addguests-btn
+    border: solid 2px #0096FF
+    color: #0084ff
+
+.input-area
+    min-width: 100%
+    padding: 10px 14px
+    border: solid 2px rgba(0,0,0,.2)
+    border-radius: 8px
+
+.schedule-btn
+    padding: 10px 20px
+    border: none
+    border-radius: 50px
+    font-size: 15px
+    color: white
+    background: #0066ff
+
+.back-btn
+    top: 30px
+    left: 30px
+    width: 44px
+    height: 44px
+    color: #0066ff
+    border: solid 1px rgba(0,0,0,.1)
+    border-radius: 100px
+
+
+
+
+.confirmation-container
+    width: 100%
+    display: flex
+    justify-content: center
+    align-items: center
+    overflow: hidden
+
+.center
+    width: 430px
+    height: 100%
+    display: flex
+    flex-direction: column
+    align-items: center
+    padding: 20px 0
+
+    h2
+        font-weight: 800
+
+.image-container
+    display: flex
+    flex-direction: column
+    justify-content: center
+    padding: 10px 0 20px 0
+
+.detail-confirmation
+    display: grid
+    gap: 10px
+    width: 100%
+    border: solid 2px rgba(0,0,0,.2)
+    border-radius: 8px
+    padding: 18px 20px
+    margin-bottom: 30px
+
+    h2
+        padding: 0
+
+    h4
+        display: flex
+        justify-content: start
+        align-items: center
+        gap: 10px
+        color: rgba(0,0,0,.6)
+
+.promo
+    display: flex
+    flex-direction: column
+    gap: 4px
+    width: 100%
+    border-top: solid 2px rgba(0,0,0,.2)
+    padding: 20px 0 16px 0
+
+.btn-grp
+    display: flex
+    gap: 20px
+
+.sign-up
+    display: flex
+    justify-content: center
+    align-items: center
+    flex: 1
+    border: solid 2px rgba(0,0,0,.6)
+    border-radius: 60px
+    padding: 8px 30px
+    white-space: nowrap
+    font-size: 12px
+    font-weight: 500
+    background: none
+
+.work-email
+    font-weight: 500
+    color: #1c90dd
+    padding: 20px
+
+
+
+
+.cookie-setting
+    position: absolute
+    left: 30px
+    bottom: 20px
+    font-size: 14px
+    font-weight: 500
+    color: #1c90dd
+
+
+
+
+.card::-webkit-scrollbar
+    display: none
+
+
+.time-container::-webkit-scrollbar
+    width: 8px
+        
+.time-container::-webkit-scrollbar-thumb
+        border-radius: 12px
+        background: rgba(0,0,0,.5)
+
+
+
+
+@media (max-width: 480px)
+
+@media (481px <= width <= 767px)
+
+@media (768px <= width <= 991px)
+
+@media (992px <= width <= 1199px)
+
+@media (1200px <= width <= 1919px)
+    
+@media (min-width: 1920px)
