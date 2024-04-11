@@ -14,17 +14,17 @@ export const FiberDemo = ()=>{
 
     return <div className="demo-component initial">
         <div className="logo-container">
-            <img src={fiberyimage} alt="fiberylogo" width={150} className=' object-contain'/>
+            <img src={fiberyimage} alt="fiberylogo" width={150} className='fibery-image object-contain'/>
         </div>
         <div className="details-container">
             <section className='details'>
                 <h3>Fibery Demo</h3>
-                <section className="clock-icon">
-                    <span><FontAwesomeIcon icon={faClock} size='lg'/><span className='pl-2'>45 min</span></span>  
+                <section className="details-icons">
+                    <span><FontAwesomeIcon className='icon-sizing' icon={faClock} size='lg'/><span className='pl-2'>30 min</span></span>  
                     {
                         detailsPage && <>
-                            <span className='flex justify-center items-center'><FontAwesomeIcon icon={faCalendar} size='lg'/><span className='pl-2'>{`${selectedDateTime.startTime} - ${selectedDateTime.endTime}, ${selectedDateTime.date}`}</span></span>
-                            <span><FontAwesomeIcon icon={faGlobeAsia} size='lg'/><span className='pl-2'>{timezone}</span></span>
+                            <span className='flex justify-center items-center'><FontAwesomeIcon className='icon-sizing' icon={faCalendar} size='lg'/><span className='pl-2'>{`${selectedDateTime.startTime} - ${selectedDateTime.endTime}, ${selectedDateTime.date}`}</span></span>
+                            <span><FontAwesomeIcon className='icon-sizing' icon={faGlobeAsia} size='lg'/><span className='pl-2'>{timezone}</span></span>
                         </>
                     }
                 </section>

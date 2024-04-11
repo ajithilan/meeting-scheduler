@@ -9,11 +9,10 @@ export const Timeselect = ()=>{
     } = useContext(cardContext);
     const timeRef = useRef('');
     const time = ['09:00','09:30','10:00','10:30','11:00','11:30','12:00','12:30','01:00','01:30','02:00','02:30','03:00','03:30','04:00','04:30','05:00','05:30']
-    
-    var displayDate = selectedDateTime.date.split(' ');
+
+    var displayDate = selectedDateTime.date.split(',');
     displayDate.pop();
-    const day = displayDate.shift();
-    displayDate = `${day}, ${displayDate.join(' ')}`;
+    displayDate = displayDate.join(',');
     document.querySelector('.demo-component')?.classList.remove('initial');
 
     const handletime = ()=>{
@@ -55,12 +54,12 @@ export const Timeselect = ()=>{
     }
 
     return <div className="timeselect-container">
-        <h4 className="pb-5">{displayDate}</h4>
+        <h4 className="display-date pb-5">{displayDate}</h4>
         <div className="time-container" onClick={handlebtns}>
             <div className="time-section">
             {
                 time.map(t=>{
-                    return <div className={'flex divtest time-'+t} data-time={'time-'+t} key={t}>
+                    return <div className={'flex timebtn-container time-'+t} data-time={'time-'+t} key={t}>
                         <button data-time={'time-'+t} className="time-select">{t}</button>
                     </div>
                 })

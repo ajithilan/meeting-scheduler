@@ -69,11 +69,11 @@ export const DetailsInput = ({ handleBackEvent }) => {
           })
         }
       </section>
-      <section className='py-2 w-96'>
+      <section className='input-grp py-2 w-96'>
         <h6 className='font-extrabold text-[13px]'>Please, share anything that will help prepare for our meeting</h6>
         <textarea className='input-area'></textarea>
       </section>
-      <section className='py-2 w-96'>
+      <section className='input-grp py-2 w-96'>
         <h6 className='font-extrabold text-[13px]'>Please, share with us the name of your Fibery workspace (if any)</h6>
         <input className='input-area'/>
       </section>
