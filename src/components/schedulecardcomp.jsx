@@ -38,6 +38,7 @@ export const ScheduleCard = ()=>{
 
   const handleBackEvent = ()=>{
     setDetailsPage(false);
+    window.innerWidth > 991 && (document.querySelector('.card-scroll').style.height = '100%');
   }
 
   useEffect(()=>{
@@ -66,7 +67,7 @@ export const ScheduleCard = ()=>{
   useEffect(()=>{
       handleStyle({target: window})
   },[])
-  
+
 
     return <div className="card flex min-w-[580px] h-[600px] bg-white rounded-lg overflow-y-scroll">
       <cardContext.Provider value={contextValues}>
