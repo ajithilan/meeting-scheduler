@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useContext } from 'react';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
@@ -12,10 +12,8 @@ export const TimeDateInput = ()=>{
     const {
         setSelectedDateTime,
         setTimezone,
-        ref992px
+        mobileStyle
     } = useContext(cardContext);
-    const [mobileStyle, setMobileStyle] = useState(false);
-    var timeoutID = useRef();
 
     const handleDateChange = (e) => {
         const data = e.$d;
@@ -35,24 +33,7 @@ export const TimeDateInput = ()=>{
         setTimezone(e.target.value);
     }
 
-    const handleStyle = (e)=>{
-        clearTimeout(timeoutID.current);
-        timeoutID.current = setTimeout(() => {
-            const width = e.target.innerWidth;
-            ref992px.current = width < 992;
-            document.querySelector('.card-scroll').style.height = ref992px.current ? 'fit-content' : '100%';
-            setMobileStyle(width < 481);
-        }, 100);
-    }
-
-    window.onresize = (e)=>{ handleStyle(e) };
-
-    useEffect(()=>{
-        handleStyle({target: window})
-    },[])
-
-
-    return <div className="flex flex-col items-center time-date-input py-[30px] px-4">
+    return <div className="timedate-input flex flex-col flex-grow items-center w-[380px] py-[30px] px-4 box-content">
         <div className='flex flex-col'>
             <h1 className="text-[18px] font-extrabold pl-3">Select a Date & Time</h1>
             <div className="calendar-container py-5">

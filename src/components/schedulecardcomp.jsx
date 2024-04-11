@@ -10,15 +10,16 @@ export const cardContext = createContext();
 export const ScheduleCard = ()=>{
   const [ detailsPage, setDetailsPage ] = useState(false);
   const [ onschedule, setOnschedule ] = useState(false);
-  const [onDateChange, setOnDateChange] = useState(false);
-  const [selectedDateTime, setSelectedDateTime] = useState({
+  const [ onDateChange, setOnDateChange ] = useState(false);
+  const [ selectedDateTime, setSelectedDateTime ] = useState({
     date:'',
     startTime:'',
     endTime:''
   });
-  const [timezone, setTimezone] = useState('America/New_York');
-  const [name, setName] = useState('');
-  const ref992px = useRef(window.innerWidth<'992px');
+  const [ timezone, setTimezone ] = useState('America/New_York');
+  const [ name, setName ] = useState('');
+  const [mobileStyle, setMobileStyle] = useState(false);
+  const timeoutID = useRef();
 
   const contextValues = {
     detailsPage,
@@ -32,7 +33,7 @@ export const ScheduleCard = ()=>{
     setTimezone,
     name,
     setName,
-    ref992px
+    mobileStyle
   }
 
   const handleBackEvent = ()=>{
@@ -41,7 +42,7 @@ export const ScheduleCard = ()=>{
 
   useEffect(()=>{
     const cardScroll = document.querySelector('.card-scroll');
-    cardScroll.style.height = detailsPage ? 'fit-content' : '100%';
+    if(detailsPage) cardScroll.style.height = 'fit-content';
     onschedule && document.querySelector('.card-scroll').classList.add('final');
     (detailsPage || onschedule) && (
       document.querySelector('.card').style.scrollBehavior = 'smooth',
@@ -49,11 +50,29 @@ export const ScheduleCard = ()=>{
     )
   },[onschedule, detailsPage])
 
-    return <div className="card">
+  const handleStyle = (e)=>{
+    clearTimeout(timeoutID.current);
+    timeoutID.current = setTimeout(() => {
+        const width = e.target.innerWidth;
+        if(!detailsPage){
+            document.querySelector('.card-scroll').style.height = width < 992 ? 'fit-content' : '100%'
+        };
+        setMobileStyle(width < 481);
+    }, 100);
+  }
+
+  window.onresize = (e)=>{ handleStyle(e) };
+
+  useEffect(()=>{
+      handleStyle({target: window})
+  },[])
+  
+
+    return <div className="card flex min-w-[580px] h-[600px] bg-white rounded-lg overflow-y-scroll">
       <cardContext.Provider value={contextValues}>
-        <div className={"card-scroll flex " + (ref992px.current ? 'h-fit' : 'h-full')}>
+        <div className="card-scroll flex relative min-h-full">
           {!onschedule && <FiberDemo/>}
-          <section className="secondhalf">
+          <section className="secondhalf flex flex-auto min-w-[570px]">
             {
               !detailsPage ? (
               !onschedule ? <>
@@ -62,7 +81,11 @@ export const ScheduleCard = ()=>{
               </> : <ConfirmationPage/>
             ) : <DetailsInput handleBackEvent={handleBackEvent}/> }
           </section>
-          <button className='cookie-setting'>Cookie settings</button>
+          <button
+            className='cookie-setting absolute left-[30px] bottom-5 w-fit h-fit text-sm font-medium text-[#1c90dd]'
+          >
+            Cookie settings
+          </button>
         </div>
       </cardContext.Provider>
     </div>

@@ -1,4 +1,4 @@
-import { useContext, useRef } from "react"
+import { useContext, useRef, useEffect } from "react"
 import { cardContext } from "./schedulecardcomp"
 
 export const Timeselect = ()=>{
@@ -37,7 +37,8 @@ export const Timeselect = ()=>{
             const targetBtn = e.target;
             const time = targetBtn.dataset.time;
             const nextbtn = document.createElement('button');
-            nextbtn.className = `next ${time} bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded`;
+            nextbtn.className = `next ${time} flex-grow bg-blue-500 hover:bg-blue-600 text-white
+            font-bold p-3.5 rounded border border-[rgb(59,130,246)] hover:border-[rgb(37,99,235)]`;
             nextbtn.dataset.time = time;
             nextbtn.textContent = 'Next';
             nextbtn.onclick = handletime;
@@ -53,14 +54,25 @@ export const Timeselect = ()=>{
         e.target.tagName === 'BUTTON' && addBtn();
     }
 
-    return <div className="timeselect-container">
+    useEffect(()=>{
+        document.querySelector('.timeselect-container').scrollIntoView({ behavior: "smooth" });
+    },[])
+
+    return <div className="timeselect-container flex flex-col flex-grow min-w-[200px] pt-[74px] pr-[3px]">
         <h4 className="display-date pb-5">{displayDate}</h4>
-        <div className="time-container" onClick={handlebtns}>
-            <div className="time-section">
+        <div className="time-container overflow-y-scroll py-4" onClick={handlebtns}>
+            <div className="time-section flex flex-col max-w-[80%] gap-2.5">
             {
                 time.map(t=>{
-                    return <div className={'flex timebtn-container time-'+t} data-time={'time-'+t} key={t}>
-                        <button data-time={'time-'+t} className="time-select">{t}</button>
+                    return <div className={'timebtn-container flex gap-1.5 time-'+t} data-time={'time-'+t} key={t}>
+                        <button
+                        data-time={'time-'+t}
+                        className="time-select flex-grow border border-[rgba(40,94,180,0.6)]
+                        rounded-[4px] p-3.5 text-[rgb(59,130,246)] font-bold transition duration-100
+                        hover:bg-[rgb(59,130,246)] hover:border-transparent hover:text-white"
+                        >
+                        {t}
+                        </button>
                     </div>
                 })
             }
